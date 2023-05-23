@@ -32,7 +32,6 @@ _minted-paper
 pacti.egg-info
 3.7
 *.doctree
-*.pickle
 *.buildinfo
 *.inv
 *.rst.txt
