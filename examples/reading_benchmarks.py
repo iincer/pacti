@@ -1,6 +1,8 @@
 import pickle
 import numpy as np
 
+from tabulate import tabulate
+
 # number of variables
 # n
 # number of variables to elim
@@ -9,39 +11,32 @@ import numpy as np
 # N
 # dataArray data (n,m,N,rtime)
 
-with open('m2data.pickle', 'rb') as f:
-    a = pickle.load(f)
+files = ['m2data.pickle', 'm4data.pickle', 'm2dataden0.25.pickle', 'm4dataden0.25.pickle']
+
+for file in files:
+    print("*"*80)
+    print(f"Processing file {file}")
+    with open(file, 'rb') as f:
+        a = pickle.load(f)        
+
+    n_Vals = [5, 10, 15, 20, 25, 30]
+    N_Vals = [5, 10, 20, 100, 300]
+
+    data = np.zeros((len(N_Vals), len(n_Vals)))
+    for pt in a:
+        row = N_Vals.index(pt[2])
+        col = n_Vals.index(pt[0])
+        data[row,col] = pt[3]
+
+    b = np.concatenate((np.reshape(np.array(N_Vals),(-1,1)),data),axis=1)
+
+    c = [["{:.2f}".format(b[row,col]) for col in range(b.shape[1])] for row in range(b.shape[0])]
+    c = [[''] + n_Vals] + c
+
+    # print table
     
-
-n_Vals = [5, 10, 15, 20, 25, 30]
-N_Vals = [5, 10, 20, 100, 300]
-
-data = np.zeros((len(N_Vals), len(n_Vals)))
-for pt in a:
-    row = N_Vals.index(pt[2])
-    col = n_Vals.index(pt[0])
-    data[row,col] = pt[3]
-
-
-
-
-b = np.concatenate((np.reshape(np.array(N_Vals),(-1,1)),data),axis=1)
-
-
-
-
-
-c = [["{:.2f}".format(b[row,col]) for col in range(b.shape[1])] for row in range(b.shape[0])]
-c = [[''] + n_Vals] + c
-
-
-
-from tabulate import tabulate
-
-
-
-print(a)
-print(tabulate(c, headers='firstrow', tablefmt='latex'))
+    print(a)
+    print(tabulate(c, headers='firstrow', tablefmt='latex'))
 
 
 
