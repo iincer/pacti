@@ -1,0 +1,11 @@
+Additional result for m = 4:
+  
+
+$ pdm run python benchmarking.py
+Analyzing n = 30
+  Analyzing N = 5
+    Runtime = 3.7736669381459556
+[(30, 4, 5, 3.7736669381459556)]
+
+
+The file m4data.pickle is missing an entry for this setting.
