@@ -1,25 +1,5 @@
 [
   {
-    "name": "contract1",
-    "type": "PolyhedralIoContract",
-    "data": {
-      "input_vars": [],
-      "output_vars": [
-        "mult_out3_a",
-        "mult_out3_e",
-        "add_out1_a",
-        "add_out1_e"
-      ],
-      "assumptions": [],
-      "guarantees": [
-        "mult_out3_e <= 0.02768554687499991",
-        "mult_out3_a <= 0.1845703125",
-        "add_out1_e <= 0.04921875000000009",
-        "add_out1_a <= 0.76904296875"
-      ]
-    }
-  },
-  {
     "name": "contract2",
     "type": "PolyhedralIoContract",
     "data": {
@@ -40,6 +20,26 @@
         "-add_out1_e + add_out2_e - mult_out3_e <= 0.0",
         "add_out2_a <= 0.984375",
         "-add_out1_a + add_out2_a - mult_out3_a <= 0.0"
+      ]
+    }
+  },
+  {
+    "name": "contract1",
+    "type": "PolyhedralIoContract",
+    "data": {
+      "input_vars": [],
+      "output_vars": [
+        "mult_out3_a",
+        "mult_out3_e",
+        "add_out1_a",
+        "add_out1_e"
+      ],
+      "assumptions": [],
+      "guarantees": [
+        "mult_out3_e <= 0.02768554687499991",
+        "mult_out3_a <= 0.1845703125",
+        "add_out1_e <= 0.04921875000000009",
+        "add_out1_a <= 0.76904296875"
       ]
     }
   },
